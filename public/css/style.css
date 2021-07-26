@@ -65,3 +65,22 @@ footer>.container, footer .row {
     width: 100%;
 }
 
+.sight-container {
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    padding: 15px 50 px;
+}
+
+.sight-container {
+    text-align: center;
+}
+
+/*image takes a 100% of the container */
+.sight-container img {
+    width: 100%;
+}
+
+.date {
+    font-weight: bold;
+}

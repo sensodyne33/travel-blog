@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //since it's an array list we can use a forEach function to get each post
     posts.forEach((post) => {
-        //these are the data we are getting from HTML
+        //automatically generate cards in the front page
+        //redirect "details button" to big-ben.html page
         let postHTML = `
         <div class="col-4">
         <div class="card">
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             <div class="card-body">
                 <h4 class="card-title">${post.title}</h4>
                 <p class="card-text">${post.description}</p>
-                <a href="/sight?id=${post.id}" class="btn btn-primary">Details</a>
+                <a href="/sight" class="btn btn-primary">Details</a>
             </div>
         </div>
     </div>`;
