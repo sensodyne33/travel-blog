@@ -1,7 +1,7 @@
 let platform = new H.service.Platform({
-    'apikey': 'PMcia3Hz52f2PNTtDUlVxgJzrhmKEdnltQThn8fNlUQ'
+    'apikey': 'IrO8EYPlWIDGaDmBXtOeTKFCUh-OUp0MB858-WU63dE'
   });
-  
+
 //search for each specific location 
 //landmarkGeocode reads name of landmark and search for this name
 function landmarkGeocode() {
@@ -12,16 +12,16 @@ function landmarkGeocode() {
         at: '0,0',
         limit: 1
       };
- 
+
   geocoder.discover(
     landmarkGeocodingParameters,
     showMap,
     (e) => console.log(e)
   );
 }
- 
- 
- 
+
+
+
 function showMap(result) {
     let location = result.items;
     let defaultLayers = platform.createDefaultLayers();
@@ -36,5 +36,5 @@ function showMap(result) {
     map.addObject(marker);
     let ui = H.ui.UI.createDefault(map, defaultLayers);
 }
- 
-landmarkGeocode();
+
+landmarkGeocode(); 
