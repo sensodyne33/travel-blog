@@ -10,6 +10,7 @@ let Post = require('./models/posts').Post;
 let CallbackRequestRouter = require('./routes/callback-requests');
 let emailsRouter = require('./routes/emails');
 
+
 app.set('view engine', 'ejs');
 
 mongoose.connect('mongodb://localhost/travels', { useNewUrlParser: true });
@@ -31,12 +32,15 @@ app.use('/callback-requests', CallbackRequestRouter);
 app.use('/emails', emailsRouter);
 
 //when request is made on sight file, we request and response from ejs
-app.get('/sight', (req, resp) => {
+app.get('/sight', async (req, resp) => {
+        //get this id from Post import
+        let id = req.query.id;
+        let post = await Post.findOne({id : id});
         resp.render('sight', {
-            title: 'Big Ben',
-            imageURL: 'https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055__480.jpg',
-            date: '2021-27-03',
-            text: 'Big Ben text.'
+            title: post.title,
+            imageURL: post.imageURL,
+            date: post.date,
+            text: post.text
         })
 })
 
