@@ -30,7 +30,7 @@ app.use('/callback-requests', CallbackRequestRouter);
 
 app.use('/emails', emailsRouter);
 
-//when request is made on card-template file, we request and response from ejs
+//when request is made on sight file, we request and response from ejs
 app.get('/sight', (req, resp) => {
         resp.render('sight', {
             title: 'Big Ben',
