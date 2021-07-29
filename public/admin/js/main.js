@@ -1,5 +1,6 @@
 
 let addPostBtn = document.querySelector('.create-post-btn');
+let logOutBtn = document.querySelector('.log-out-btn');
 
 document.addEventListener('DOMContentLoaded', async function() {
     //when the webpage is loading add-post is first called
@@ -92,3 +93,10 @@ async function addEmails() {
       requestsBlock.insertAdjacentHTML('beforeend', requestHTML);
   })
 }
+//log out button from admin page
+logOutBtn.addEventListener('click', function() {
+  //remove all cookies to log out
+  document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+  //redirect user to main page after logging out
+  window.location.href = '/';
+})

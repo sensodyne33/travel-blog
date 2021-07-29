@@ -3,7 +3,7 @@ let Post = require ('../models/posts').Post;
 let uniqid = require('uniqid');
 let express = require('express');
 let router = express.Router();
-
+let authMiddleware = require('../middleware/auth');
 
 //get all the posts from the backend
 router.get('/', async (req, resp)=>{
@@ -13,7 +13,7 @@ router.get('/', async (req, resp)=>{
 
 //get the posts data for the update-form
 //get data by its id number
-router.get('/:id', async (req, resp) => {
+router.get('/:id', authMiddleware, async (req, resp) => {
     //first we gotta read the id number
     let id = req.params.id;
     let post = await Post.findOne({id: id});
@@ -22,7 +22,7 @@ router.get('/:id', async (req, resp) => {
 })
 
 //post all the posts from frontend and save to backend
-router.post('/', async (req, resp)=>{
+router.post('/', authMiddleware, async (req, resp) =>{
     let reqBody = req.body;
 
     //allow us to display image files in the front page by accessingthe public/image folder
@@ -48,7 +48,7 @@ router.post('/', async (req, resp)=>{
 })
  
 //add a delete request to the backend 
-router.delete('/:id', async (req, resp) => {
+router.delete('/:id', authMiddleware, async (req, resp) => {
     //get the value of the id
     let id = req.params.id;
     //delete post by id
@@ -58,7 +58,7 @@ router.delete('/:id', async (req, resp) => {
 })
  
 //add a put request to update backend data
-router.put('/:id', async (req,resp) => {
+router.put('/:id', authMiddleware, async (req, resp) => {
     //to read id of the post
     let id = req.params.id;
     //update the post id and body
